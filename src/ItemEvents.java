@@ -1,9 +1,13 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
 public class ItemEvents extends JFrame implements ItemListener {
+    Container contentPane = getContentPane();
     JPanel pnl = new JPanel();
+    JPanel grid = new JPanel(new GridLayout(3,1));
+
     String[] styles = {"Deep Dish","Gourmet Style","Thin&Crisp"};
     JComboBox<String> comboBox = new JComboBox<String>(styles);
 
@@ -25,9 +29,12 @@ public class ItemEvents extends JFrame implements ItemListener {
 
         pnl.add(rad1);
         pnl.add(rad2);
-        pnl.add(chk);
-        pnl.add(comboBox);
-        pnl.add(txtArea);
+        grid.add(chk);
+        grid.add(comboBox);
+        grid.add(txtArea);
+
+        contentPane.add("North",pnl);
+        contentPane.add("Center",grid);
 
         rad1.addItemListener(this);
         rad2.addItemListener(this);
